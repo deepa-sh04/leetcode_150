@@ -1,0 +1,31 @@
+"""
+Example 1:
+Input: nums = [3,2,3]
+Output: 3
+it is best to use hashmap in this kind of question
+✅ Time Complexity 
+
+n = len(nums) → O(1)
+hashmap = {} → O(1)
+for i in nums: → runs n times
+hashmap.get(...) + 1 → O(1) avg per iteration
+Total = O(n)
+for key, value in hashmap.items(): → runs k times (unique elements, ≤ n)
+In worst case (all unique) → O(n)
+Inside check & return → O(1)
+✅ Total Time = O(n) + O(n) = O(n)
+✅ Space Complexity
+
+hashmap stores counts of up to n unique elements → O(n)
+"""
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        n=len(nums)
+        hashmap={}
+        for i in nums:
+            hashmap[i]=hashmap.get(i,0)+1
+        for key,value in hashmap.items():
+            if value>(n/2):
+                return key 
+                break    
+         
